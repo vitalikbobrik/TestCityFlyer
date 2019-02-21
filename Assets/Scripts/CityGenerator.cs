@@ -5,11 +5,17 @@ using UnityEngine;
 public class CityGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject buildingPrefab;
+
     [SerializeField] private Material[] buildingMaterials;
+
     [SerializeField] private int numberOfStreets;
+
     [SerializeField] private int minBuildingWidth;
+
     [SerializeField] private int maxBuildingWidth;
+
     [SerializeField] private int minBuildingHeigth;
+
     [SerializeField] private int maxBuildingHeigth;
     
 
