@@ -6,6 +6,8 @@ public class CityGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject buildingPrefab;
 
+    [SerializeField] private GameObject goldCubePrefab;
+
     [SerializeField] private Material[] buildingMaterials;
 
     [SerializeField] private int numberOfStreets;
@@ -17,9 +19,12 @@ public class CityGenerator : MonoBehaviour
     [SerializeField] private int minBuildingHeigth;
 
     [SerializeField] private int maxBuildingHeigth;
-    
 
-    private void Start()
+    [SerializeField] private int numberOfGoldCubes;
+
+    private List <GameObject> allBuildings = new List<GameObject>();
+
+    private void Awake()
     {
         MeshRenderer buildingMaterial = buildingPrefab.GetComponentInChildren<MeshRenderer>();
         Collider planeCol = GetComponent<Collider>();
@@ -27,7 +32,7 @@ public class CityGenerator : MonoBehaviour
         //center of start point
         Vector3 zeroPoint = new Vector3 (planeCol.bounds.min.x+placeForBuiding/2, 0f,
                                          planeCol.bounds.min.z+placeForBuiding/2);
-        Debug.Log(zeroPoint);
+        //Debug.Log(zeroPoint);
         if (placeForBuiding <= maxBuildingWidth)
         {
             Debug.Log("Please choose less width of Max Building Width");
@@ -42,14 +47,24 @@ public class CityGenerator : MonoBehaviour
                     Random.Range(minBuildingWidth, maxBuildingWidth)
                     );
                 buildingMaterial.material = buildingMaterials[Random.Range(0, buildingMaterials.Length)];
-                Instantiate(buildingPrefab, 
-                    new Vector3(zeroPoint.x,zeroPoint.y-buildingPrefab.transform.localScale.y/2,zeroPoint.z), 
+                GameObject building = Instantiate(buildingPrefab, 
+                    new Vector3(zeroPoint.x,zeroPoint.y+buildingPrefab.transform.localScale.y/2,zeroPoint.z), 
                     Quaternion.identity);
+                allBuildings.Add(building);
                 zeroPoint.x += placeForBuiding;
             }
             zeroPoint.x = planeCol.bounds.min.x + placeForBuiding/2;
             zeroPoint.z += placeForBuiding;
         }
+        Debug.Log(allBuildings.Count);
 
+        for (int i = 0; i < numberOfGoldCubes; i++)
+        {
+            Instantiate(goldCubePrefab,
+                        allBuildings[Random.Range(0, allBuildings.Count)].
+                        GetComponentInChildren<Transform>().position,
+                        Quaternion.identity);
+            
+        }
     }
 }
