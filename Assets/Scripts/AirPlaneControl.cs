@@ -5,7 +5,7 @@ public class AirPlaneControl : MonoBehaviour
 
     [SerializeField] private float rotationRate = 100;
 
-    [SerializeField] private float moveRate = 20f;
+    [SerializeField] private float moveRate = 2f;
 
     [SerializeField] private float moveSpeed = 5f;
 
