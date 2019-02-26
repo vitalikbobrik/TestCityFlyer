@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BonusCube : MonoBehaviour
 {
-    private void OnCollisionEnter()
+    private void OnTriggerEnter()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

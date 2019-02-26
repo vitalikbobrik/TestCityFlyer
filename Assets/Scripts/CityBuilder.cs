@@ -31,8 +31,18 @@ public class CityBuilder : MonoBehaviour
     [Header("Plane prefab:")]
     public GameObject AirPlane;
 
-    private List <GameObject> m_allHouses = new List<GameObject>();
+    private static CityBuilder instance;
+    public static CityBuilder Instance()
+    {
+        if (instance == null)
+        {
+            instance = FindObjectOfType<CityBuilder>();
+        }
+        return instance;
+    }
 
+    private List <GameObject> m_allHouses = new List<GameObject>();
+    public  List <GameObject> m_AllCubes = new List<GameObject>();
 
     public void BuildCity()
     {
@@ -61,7 +71,7 @@ public class CityBuilder : MonoBehaviour
         }
     }
 
-    public void BuildCubes()
+    public void PlaceCubes()
     {
         for (int i = 0; i < m_CountOfCubes; i++)
         {
@@ -69,7 +79,8 @@ public class CityBuilder : MonoBehaviour
             Vector3 pos = new Vector3(cubeHouse.transform.position.x,
             cubeHouse.transform.position.y + cubeHouse.transform.localScale.y + DistanceToHouse,
             cubeHouse.transform.position.z);
-            Instantiate(m_GoldCubePrefab, pos, Quaternion.identity);
+            GameObject cube = Instantiate(m_GoldCubePrefab, pos, Quaternion.identity);
+            m_AllCubes.Add(cube);
         }
     }
 
@@ -129,11 +140,11 @@ public class CityBuilder : MonoBehaviour
         Instantiate(AirPlane, pos, Quaternion.identity);
     }
 
-    private void Start()
+    private void Awake()
     {
         Debug.Log("CityBuilder : Start : ");
         BuildCity();
-        BuildCubes();
+        PlaceCubes();
         PlaceAirPlane();
     }
 
