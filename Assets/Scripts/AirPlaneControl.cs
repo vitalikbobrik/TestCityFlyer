@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class AirPlaneControl : MonoBehaviour
 {
@@ -16,7 +17,15 @@ public class AirPlaneControl : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+        StartCoroutine(UnSetKinematic());
     }
+
+    IEnumerator UnSetKinematic()
+    {
+        yield return new WaitForSeconds(3f);
+        rb.isKinematic = false;
+    }   
 
     private void FixedUpdate()
     {

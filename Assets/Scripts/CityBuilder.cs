@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CityBuilder : MonoBehaviour
 {
     public GameObject m_HousePrefab;
@@ -22,7 +23,15 @@ public class CityBuilder : MonoBehaviour
     public float m_HouseWidthMax = 10F;
     public float m_HouseDepthMax = 10F;
 
+    [Header("Cube settings:")]
+    public GameObject m_GoldCubePrefab;
+    public float DistanceToHouse;
+    public int m_CountOfCubes;
 
+    [Header("Plane prefab:")]
+    public GameObject AirPlane;
+
+    private List <GameObject> m_allHouses = new List<GameObject>();
 
 
     public void BuildCity()
@@ -47,11 +56,22 @@ public class CityBuilder : MonoBehaviour
                     Debug.LogError("CityBuilder : BuildCity : house null");
                     return;
                 }
+                
             }
         }
     }
 
-
+    public void BuildCubes()
+    {
+        for (int i = 0; i < m_CountOfCubes; i++)
+        {
+            GameObject cubeHouse = m_allHouses[Random.Range(0, m_allHouses.Count)];
+            Vector3 pos = new Vector3(cubeHouse.transform.position.x,
+            cubeHouse.transform.position.y + cubeHouse.transform.localScale.y + DistanceToHouse,
+            cubeHouse.transform.position.z);
+            Instantiate(m_GoldCubePrefab, pos, Quaternion.identity);
+        }
+    }
 
     private float GetCellMax()
     {
@@ -72,6 +92,7 @@ public class CityBuilder : MonoBehaviour
             GameObject _house = Instantiate(m_HousePrefab, pos, Quaternion.identity) as GameObject;
             _house.transform.localScale = GetRandomHouseSize();
             _house.GetComponentInChildren<MeshRenderer>().material.color = Random.ColorHSV();
+            m_allHouses.Add(_house);
             return _house;
         }
         else
@@ -99,11 +120,21 @@ public class CityBuilder : MonoBehaviour
         plane.GetComponent<MeshRenderer>().material.color = Color.green;
     }
 
+    private void PlaceAirPlane()
+    {
+        GameObject airPlaneHouse = m_allHouses[Random.Range(0, m_allHouses.Count)];
+        Vector3 pos = new Vector3(airPlaneHouse.transform.position.x,
+            airPlaneHouse.transform.position.y + airPlaneHouse.transform.localScale.y + 0.5f,
+            airPlaneHouse.transform.position.z);
+        Instantiate(AirPlane, pos, Quaternion.identity);
+    }
 
     private void Start()
     {
         Debug.Log("CityBuilder : Start : ");
         BuildCity();
+        BuildCubes();
+        PlaceAirPlane();
     }
 
     

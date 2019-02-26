@@ -45,11 +45,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HousePrefab: {fileID: 5818749140108093776, guid: 50e4898f3708616489a37f3c9f0ab8e3,
     type: 3}
-  m_CitySize: 100
+  m_CitySize: 500
   m_StreetWidth: 10
   m_HouseHeightMin: 10
-  m_HouseWidthMin: 5
-  m_HouseDepthMin: 5
-  m_HouseHeightMax: 30
-  m_HouseWidthMax: 5
-  m_HouseDepthMax: 5
+  m_HouseWidthMin: 10
+  m_HouseDepthMin: 3
+  m_HouseHeightMax: 50
+  m_HouseWidthMax: 15
+  m_HouseDepthMax: 15
+  m_GoldCubePrefab: {fileID: 2607036631157403103, guid: 90a97cfa1314b2142a5ab7c61194c6bc,
+    type: 3}
+  DistanceToHouse: 5
+  m_CountOfCubes: 5
+  AirPlane: {fileID: 2951940567949833797, guid: d0c609ee305c4d24aa790c41c87ff05f,
+    type: 3}

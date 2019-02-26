@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3455701847675597105}
   - component: {fileID: 5772585759012635455}
   - component: {fileID: 6263221347873999284}
+  - component: {fileID: 608168726426945200}
+  - component: {fileID: 8653329846534954876}
   m_Layer: 0
   m_Name: GoldCube
   m_TagString: Untagged
@@ -28,11 +30,11 @@ Transform:
   m_GameObject: {fileID: 2607036631157403103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 219.61153, z: 0}
 --- !u!33 &3455701847675597105
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -91,3 +93,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &608168726426945200
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2607036631157403103}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b05d0ee0e5da73d4ca70f8e3a0bd1f45, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b05d0ee0e5da73d4ca70f8e3a0bd1f45, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &8653329846534954876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2607036631157403103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9066a5c5787b39048813ebd9050c7939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
