@@ -28,8 +28,10 @@ public class CityBuilder : MonoBehaviour
     public float DistanceToHouse;
     public int m_CountOfCubes;
 
-    [Header("Plane prefab:")]
+    [Header("AirPlane prefab:")]
     public GameObject AirPlane;
+
+    
 
     private static CityBuilder instance;
     public static CityBuilder Instance()
@@ -42,6 +44,7 @@ public class CityBuilder : MonoBehaviour
     }
 
     private List <GameObject> m_allHouses = new List<GameObject>();
+    [HideInInspector]
     public  List <GameObject> m_AllCubes = new List<GameObject>();
 
     public void BuildCity()
@@ -135,10 +138,11 @@ public class CityBuilder : MonoBehaviour
     {
         GameObject airPlaneHouse = m_allHouses[Random.Range(0, m_allHouses.Count)];
         Vector3 pos = new Vector3(airPlaneHouse.transform.position.x,
-            airPlaneHouse.transform.position.y + airPlaneHouse.transform.localScale.y + 0.5f,
+            airPlaneHouse.transform.position.y + airPlaneHouse.transform.localScale.y + 1f,
             airPlaneHouse.transform.position.z);
         Instantiate(AirPlane, pos, Quaternion.identity);
     }
+
 
     private void Awake()
     {

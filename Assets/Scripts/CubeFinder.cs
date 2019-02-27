@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class CubeFinder : MonoBehaviour
 {
+    private List<GameObject> m_cubes = new List<GameObject>();
+    public bool m_IsWin = false;
+    private Transform closest;
+
     void Update()
     {
-        Transform closest = GetClosestObject();
-        if (closest != null)
+        closest = GetClosestObject();
+
+        if (m_cubes.Count == 0 && m_IsWin == false)
         {
+            Debug.Log("You Win!");
+            m_IsWin = true;
+        }
+        else
+        {
+            if (closest == null) return;
             transform.LookAt(closest);
         }
+
+
     }
 
 
     public Transform GetClosestObject()
     {
-        float closest = 1000; 
+        float closest = 1000;
         Transform closestObject = null;
-        List <GameObject> m_cubes = CityBuilder.Instance().m_AllCubes;
+        m_cubes = CityBuilder.Instance().m_AllCubes;
         for (int i = 0; i < m_cubes.Count; i++)
         {
             if (m_cubes[i].activeSelf == false)

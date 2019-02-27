@@ -3,16 +3,15 @@ using System.Collections;
 
 public class AirPlaneControl : MonoBehaviour
 {
-
-    [SerializeField] private float rotationRate = 100;
-
-    [SerializeField] private float moveRate = 2f;
-
-    [SerializeField] private float moveSpeed = 5f;
-
-    [SerializeField] private float maxSpeed = 30f;
+    [Header("Airplane Settings:")]
+    [SerializeField] private float rotationRate = 100f;
+    [SerializeField] private float upDownRate = 2f;
+    [SerializeField] private float moveSpeed = 30f;
+    [SerializeField] private float maxSpeed = 50f;
 
     private Rigidbody rb;
+    private float upAxis;
+    private float turnAxis;
 
     private void Start()
     {
@@ -29,8 +28,8 @@ public class AirPlaneControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float upAxis = Input.GetAxis("Vertical");
-        float turnAxis = Input.GetAxis("Horizontal");
+        upAxis = Input.GetAxis("Vertical");
+        turnAxis = Input.GetAxis("Horizontal");
         MoveTowards(moveSpeed);
         ApplyInput(upAxis, turnAxis);
         CheckBrakes();
@@ -53,7 +52,7 @@ public class AirPlaneControl : MonoBehaviour
 
     private void MoveUpDown(float input)
     {
-        rb.AddForce(transform.up * input * moveRate, ForceMode.Impulse);
+        rb.AddForce(transform.up * input * upDownRate, ForceMode.Impulse);
     }
 
     private void Turn(float input)
