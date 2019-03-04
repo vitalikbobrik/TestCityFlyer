@@ -15,6 +15,11 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("StartMenu");
     }
 
+    public void ChooseAirPlane()
+    {
+        SceneManager.LoadScene("PlaneChoose");
+    }
+
     public void QuitGame()
     {
         Application.Quit();

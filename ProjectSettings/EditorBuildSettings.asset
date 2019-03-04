@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BuilderScene.unity
     guid: 87f7f09972189c248820c1fb8aec427f
+  - enabled: 1
+    path: Assets/Scenes/PlaneChoose.unity
+    guid: f86d0b7f851510b4ea655a4212cd5681
   m_configObjects: {}

@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    private GameObject m_healthCanvas;
     public int m_Health = 3;
     private bool m_justHit;
     private bool isDied = false;
 
+    private void Start()
+    {
+        m_healthCanvas = GameObject.Find("AirPlaneHealth");
+
+    }
     private void OnCollisionEnter()
     {
         if (!m_justHit)
@@ -19,7 +25,8 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator Delay()
     {
         m_Health--;
-        Debug.Log("Your health: " + m_Health);
+        m_healthCanvas.transform.GetChild(m_Health).gameObject.SetActive(false);
+        //Debug.Log("Your health: " + m_Health);
         m_justHit = true;
         yield return new WaitForSeconds(3f);
         m_justHit = false;
