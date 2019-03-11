@@ -28,10 +28,8 @@ public class CityBuilder : MonoBehaviour
     public float DistanceToHouse;
     public int m_CountOfCubes;
 
-    [Header("AirPlane prefab:")]
-    public GameObject AirPlane;
-
-    
+    [Header("AirPlane prefabs:")]
+    public GameObject [] AirPlane;
 
     private static CityBuilder instance;
     public static CityBuilder Instance()
@@ -74,18 +72,7 @@ public class CityBuilder : MonoBehaviour
         }
     }
 
-    public void PlaceCubes()
-    {
-        for (int i = 0; i < m_CountOfCubes; i++)
-        {
-            GameObject cubeHouse = m_allHouses[Random.Range(0, m_allHouses.Count)];
-            Vector3 pos = new Vector3(cubeHouse.transform.position.x,
-            cubeHouse.transform.position.y + cubeHouse.transform.localScale.y + DistanceToHouse,
-            cubeHouse.transform.position.z);
-            GameObject cube = Instantiate(m_GoldCubePrefab, pos, Quaternion.identity);
-            m_AllCubes.Add(cube);
-        }
-    }
+    
 
     private float GetCellMax()
     {
@@ -134,13 +121,26 @@ public class CityBuilder : MonoBehaviour
         plane.GetComponent<MeshRenderer>().material.color = Color.green;
     }
 
+    public void PlaceCubes()
+    {
+        for (int i = 0; i < NumberOfCubes.m_numberOfCubes; i++)
+        {
+            GameObject houseWithCube = m_allHouses[Random.Range(0, m_allHouses.Count)];
+            Vector3 pos = new Vector3(houseWithCube.transform.position.x,
+            houseWithCube.transform.position.y + houseWithCube.transform.localScale.y + DistanceToHouse,
+            houseWithCube.transform.position.z);
+            GameObject cube = Instantiate(m_GoldCubePrefab, pos, Quaternion.identity);
+            m_AllCubes.Add(cube);
+        }
+    }
+
     private void PlaceAirPlane()
     {
         GameObject airPlaneHouse = m_allHouses[Random.Range(0, m_allHouses.Count)];
         Vector3 pos = new Vector3(airPlaneHouse.transform.position.x,
             airPlaneHouse.transform.position.y + airPlaneHouse.transform.localScale.y + 1f,
             airPlaneHouse.transform.position.z);
-        Instantiate(AirPlane, pos, Quaternion.identity);
+        Instantiate(AirPlane[SelectAirPlane.m_currentIndex], pos, Quaternion.identity);
     }
 
 

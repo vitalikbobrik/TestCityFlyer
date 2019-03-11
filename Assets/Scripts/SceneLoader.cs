@@ -5,9 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public void  CubesCount(int cube)
+    {
+        NumberOfCubes.m_numberOfCubes = cube;
+    }
+
     public void LoadGameScene()
     {
-        SceneManager.LoadScene("BuilderScene");
+        SceneManager.LoadScene("GameScene");
+    }
+
+    public void ReloadLevel()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     public void LoadStartMenu()
@@ -20,8 +31,14 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("PlaneChoose");
     }
 
+    public void ChooseLevel()
+    {
+        SceneManager.LoadScene("ChooseLevel");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
     }
+   
 }

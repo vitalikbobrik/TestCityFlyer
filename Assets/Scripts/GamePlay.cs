@@ -2,28 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeFinder : MonoBehaviour
+public class GamePlay : MonoBehaviour
 {
+    [SerializeField] private GameObject m_arrow;
     private List<GameObject> m_cubes = new List<GameObject>();
-    public bool m_IsWin = false;
+    public static bool IsWin = false;
     private Transform closest;
+    public static bool IsPaused = true;
 
     void Update()
     {
         closest = GetClosestObject();
-
-        if (m_cubes.Count == 0 && m_IsWin == false)
-        {
-            Debug.Log("You Win!");
-            m_IsWin = true;
-        }
-        else
-        {
-            if (closest == null) return;
-            transform.LookAt(closest);
-        }
-
-
+        if (closest == null) return;
+        m_arrow.transform.LookAt(closest);
     }
 
 

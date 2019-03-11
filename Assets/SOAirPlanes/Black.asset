@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Black
   m_EditorClassIdentifier: 
   airPlaneName: AirPlaneBlack
-  AirPlane: {fileID: 4555080554838080698, guid: 37bf18d808d0cdc4b9ab2d2f0c7c6e17,
-    type: 3}
   MaxSpeed: 30
+  AirPlanePrefab: {fileID: 2951940567949833797, guid: d0c609ee305c4d24aa790c41c87ff05f,
+    type: 3}

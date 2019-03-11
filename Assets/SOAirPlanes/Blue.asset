@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Blue
   m_EditorClassIdentifier: 
   airPlaneName: AirPlaneBlue
-  AirPlane: {fileID: 616854023187723137, guid: c7702adecd36bcc468c015f7d523bdd3, type: 3}
   MaxSpeed: 40
+  AirPlanePrefab: {fileID: 6453741702998115467, guid: 7ec24e109744d904cadedaa792ca5675,
+    type: 3}

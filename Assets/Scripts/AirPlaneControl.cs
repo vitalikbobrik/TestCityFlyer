@@ -12,6 +12,7 @@ public class AirPlaneControl : MonoBehaviour
     private Rigidbody rb;
     private float upAxis;
     private float turnAxis;
+    
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class AirPlaneControl : MonoBehaviour
     IEnumerator UnSetKinematic()
     {
         yield return new WaitForSeconds(3f);
+        GamePlay.IsPaused = false;
         rb.isKinematic = false;
     }   
 

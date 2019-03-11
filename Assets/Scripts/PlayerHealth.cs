@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     private GameObject m_healthCanvas;
+    private GameObject m_loseScreen;
+    private ParticleSystem m_fire;
+    private Rigidbody m_rb;
+    private Animation m_justHitAnim;
     public int m_Health = 3;
     private bool m_justHit;
     private bool isDied = false;
@@ -12,11 +16,15 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         m_healthCanvas = GameObject.Find("AirPlaneHealth");
-
+        m_loseScreen = GameObject.Find("LoseScreen");
+        m_loseScreen.SetActive(false);
+        m_fire = GetComponentInChildren<ParticleSystem>(true);
+        m_rb = GetComponent<Rigidbody>();
+        m_justHitAnim = GetComponent<Animation>();
     }
     private void OnCollisionEnter()
     {
-        if (!m_justHit)
+        if (!m_justHit && m_Health>0)
         {
             StartCoroutine(Delay());
         }
@@ -26,19 +34,18 @@ public class PlayerHealth : MonoBehaviour
     {
         m_Health--;
         m_healthCanvas.transform.GetChild(m_Health).gameObject.SetActive(false);
-        //Debug.Log("Your health: " + m_Health);
         m_justHit = true;
-        yield return new WaitForSeconds(3f);
-        m_justHit = false;
-    }
-    
-
-    private void Update()
-    {
-        if(m_Health <= 0 && !isDied)
+        //m_justHitAnim.Play("JustHitAnim");
+        if (m_Health <= 0 && !isDied)
         {
-            Debug.Log("You Lose!");
+            m_loseScreen.SetActive(true);
+            m_fire.Play();
+            m_rb.isKinematic = true;
             isDied = true;
         }
+        yield return new WaitForSeconds(3f);
+        m_justHit = false;
+        //m_justHitAnim.Stop();
     }
+
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2178870844554946118}
   - component: {fileID: 5295870412055081853}
+  - component: {fileID: 5627872255578746577}
   m_Layer: 0
   m_Name: CityBuilder
   m_TagString: Untagged
@@ -57,5 +58,20 @@ MonoBehaviour:
     type: 3}
   DistanceToHouse: 5
   m_CountOfCubes: 5
-  AirPlane: {fileID: 2951940567949833797, guid: d0c609ee305c4d24aa790c41c87ff05f,
-    type: 3}
+  AirPlane:
+  - {fileID: 2951940567949833797, guid: d0c609ee305c4d24aa790c41c87ff05f, type: 3}
+  - {fileID: 6453741702998115467, guid: 7ec24e109744d904cadedaa792ca5675, type: 3}
+  - {fileID: 7942686374588310727, guid: f949f67df026a014b85dd6faa028c9fe, type: 3}
+  m_AllCubes: []
+--- !u!114 &5627872255578746577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233601101733234441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d029139221b82ef4c998d1ae461695d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
