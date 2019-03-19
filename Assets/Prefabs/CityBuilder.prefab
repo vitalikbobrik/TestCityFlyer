@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2178870844554946118}
   - component: {fileID: 5295870412055081853}
   - component: {fileID: 5627872255578746577}
+  - component: {fileID: 395783433}
   m_Layer: 0
   m_Name: CityBuilder
   m_TagString: Untagged
@@ -75,3 +76,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d029139221b82ef4c998d1ae461695d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &395783433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233601101733234441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31417851957783d439e1d1af2ccb6b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_winScreen: {fileID: 5454699600262900353, guid: eedd9611fd3301e4799778f302e398ce,
+    type: 3}
+  m_loseScreen: {fileID: 8889853146743781661, guid: 8cbf7fce35a7ab5458c25f2f2d5303e5,
+    type: 3}

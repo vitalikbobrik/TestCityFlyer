@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePlay : MonoBehaviour
+public class ClosestObject : MonoBehaviour
 {
     [SerializeField] private GameObject m_arrow;
+    [SerializeField] private GameObject m_winScreen;
     private List<GameObject> m_cubes = new List<GameObject>();
-    public static bool IsWin = false;
     private Transform closest;
-    public static bool IsPaused = true;
 
     void Update()
     {
@@ -17,8 +16,7 @@ public class GamePlay : MonoBehaviour
         m_arrow.transform.LookAt(closest);
     }
 
-
-    public Transform GetClosestObject()
+public Transform GetClosestObject()
     {
         float closest = 1000;
         Transform closestObject = null;

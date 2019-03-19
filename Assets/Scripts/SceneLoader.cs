@@ -10,6 +10,11 @@ public class SceneLoader : MonoBehaviour
         NumberOfCubes.m_numberOfCubes = cube;
     }
 
+    public void ThisLevel(int level)
+    {
+        CurrentLevel.m_Level = level;
+    }
+
     public void LoadGameScene()
     {
         SceneManager.LoadScene("GameScene");
@@ -34,6 +39,11 @@ public class SceneLoader : MonoBehaviour
     public void ChooseLevel()
     {
         SceneManager.LoadScene("ChooseLevel");
+    }
+
+    public void LoadRecords()
+    {
+        SceneManager.LoadScene("Records");
     }
 
     public void QuitGame()

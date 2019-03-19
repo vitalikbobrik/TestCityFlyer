@@ -24,7 +24,7 @@ public class AirPlaneControl : MonoBehaviour
     IEnumerator UnSetKinematic()
     {
         yield return new WaitForSeconds(3f);
-        GamePlay.IsPaused = false;
+        GameState.IsPaused = false;
         rb.isKinematic = false;
     }   
 

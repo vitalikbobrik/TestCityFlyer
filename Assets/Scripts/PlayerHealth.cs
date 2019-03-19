@@ -11,7 +11,6 @@ public class PlayerHealth : MonoBehaviour
     private Animation m_justHitAnim;
     public int m_Health = 3;
     private bool m_justHit;
-    private bool isDied = false;
 
     private void Start()
     {
@@ -35,17 +34,15 @@ public class PlayerHealth : MonoBehaviour
         m_Health--;
         m_healthCanvas.transform.GetChild(m_Health).gameObject.SetActive(false);
         m_justHit = true;
-        //m_justHitAnim.Play("JustHitAnim");
-        if (m_Health <= 0 && !isDied)
+        if (m_Health <= 0 && !GameState.isDied)
         {
             m_loseScreen.SetActive(true);
             m_fire.Play();
             m_rb.isKinematic = true;
-            isDied = true;
+            GameState.isDied = true;
         }
         yield return new WaitForSeconds(3f);
         m_justHit = false;
-        //m_justHitAnim.Stop();
     }
 
 }

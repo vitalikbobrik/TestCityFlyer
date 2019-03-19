@@ -16,14 +16,14 @@ public class PauseGame : MonoBehaviour
     public void OnPause()
     {
         m_pauseScreen.SetActive(true);
-        GamePlay.IsPaused = true;
+        GameState.IsPaused = true;
         m_airPlane.GetComponent<Rigidbody>().isKinematic = true;
         m_pauseButton.SetActive(false);
     }
     public void BackToGame()
     {
         m_pauseScreen.SetActive(false);
-        GamePlay.IsPaused = false;
+        GameState.IsPaused = false;
         m_airPlane.GetComponent<Rigidbody>().isKinematic = false;
         m_pauseButton.SetActive(true);
 
