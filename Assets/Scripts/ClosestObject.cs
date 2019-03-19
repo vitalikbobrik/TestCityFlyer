@@ -5,7 +5,6 @@ using UnityEngine;
 public class ClosestObject : MonoBehaviour
 {
     [SerializeField] private GameObject m_arrow;
-    [SerializeField] private GameObject m_winScreen;
     private List<GameObject> m_cubes = new List<GameObject>();
     private Transform closest;
 

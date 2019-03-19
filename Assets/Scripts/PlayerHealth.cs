@@ -34,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
         m_Health--;
         m_healthCanvas.transform.GetChild(m_Health).gameObject.SetActive(false);
         m_justHit = true;
+        m_justHitAnim.Play("JustHitAnim");
         if (m_Health <= 0 && !GameState.isDied)
         {
             m_loseScreen.SetActive(true);
