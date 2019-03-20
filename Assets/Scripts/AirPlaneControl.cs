@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class AirPlaneControl : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class AirPlaneControl : MonoBehaviour
     private Rigidbody rb;
     private float upAxis;
     private float turnAxis;
-    
+    public static bool IsBraking;
 
     private void Start()
     {
@@ -31,17 +32,21 @@ public class AirPlaneControl : MonoBehaviour
     private void FixedUpdate()
     {
         upAxis = Input.GetAxis("Vertical");
+        upAxis = Input.acceleration.y;
         turnAxis = Input.GetAxis("Horizontal");
+        turnAxis = Input.acceleration.z;
         MoveTowards(moveSpeed);
         ApplyInput(upAxis, turnAxis);
         CheckBrakes();
     }
 
-    private void CheckBrakes()
+    
+
+    public void CheckBrakes()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || IsBraking)
         {
-            rb.velocity = rb.velocity * 0.97f;
+            rb.velocity = rb.velocity * 0.95f;
         }
 
     }
@@ -64,7 +69,7 @@ public class AirPlaneControl : MonoBehaviour
 
     private void MoveTowards(float speed)
     {
-        if (Input.GetKey(KeyCode.Space)) return;
+        if (Input.GetKey(KeyCode.Space) || IsBraking) return;
         if (rb.velocity.magnitude > maxSpeed)
         {
             rb.velocity = rb.velocity.normalized * maxSpeed;

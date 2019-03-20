@@ -45,6 +45,8 @@ public class CityBuilder : MonoBehaviour
     [HideInInspector]
     public  List <GameObject> m_AllCubes = new List<GameObject>();
 
+    private GameObject stopMenuMusic;
+
     public void BuildCity()
     {
         Debug.Log("CityBuilder : BuildCity : ");
@@ -146,10 +148,12 @@ public class CityBuilder : MonoBehaviour
 
     private void Awake()
     {
+        stopMenuMusic = GameObject.Find("MenuMusic");
         Debug.Log("CityBuilder : Start : ");
         BuildCity();
         PlaceCubes();
         PlaceAirPlane();
+        Destroy(stopMenuMusic);
     }
 
     

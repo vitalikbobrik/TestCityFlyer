@@ -5,7 +5,7 @@ using TMPro;
 
 public class ReadTime : MonoBehaviour
 {
-    public int LevelId;
+    [SerializeField] private int LevelId;
     public TextMeshProUGUI BestTimeText;
 
     private void Start()
