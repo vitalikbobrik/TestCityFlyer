@@ -14,6 +14,7 @@ public class AirPlaneControl : MonoBehaviour
     private float upAxis;
     private float turnAxis;
     public static bool IsBraking;
+    private Quaternion calibrate;
 
     private void Start()
     {
@@ -22,8 +23,11 @@ public class AirPlaneControl : MonoBehaviour
         StartCoroutine(UnSetKinematic());
     }
 
+   
+
     IEnumerator UnSetKinematic()
     {
+        GameState.IsPaused = true;
         yield return new WaitForSeconds(3f);
         GameState.IsPaused = false;
         rb.isKinematic = false;
@@ -31,10 +35,17 @@ public class AirPlaneControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        upAxis = Input.GetAxis("Vertical");
-        upAxis = Input.acceleration.y;
-        turnAxis = Input.GetAxis("Horizontal");
-        turnAxis = Input.acceleration.z;
+        
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            turnAxis = Input.acceleration.z;
+            upAxis = Input.acceleration.y;
+        }
+        else
+        {
+            upAxis = Input.GetAxis("Vertical");
+            turnAxis = Input.GetAxis("Horizontal");
+        }
         MoveTowards(moveSpeed);
         ApplyInput(upAxis, turnAxis);
         CheckBrakes();
